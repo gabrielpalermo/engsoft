@@ -38,7 +38,7 @@ public class cadastro extends HttpServlet {
      * @throws java.security.NoSuchAlgorithmException
 
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ClassNotFoundException, NoSuchAlgorithmException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ClassNotFoundException, NoSuchAlgorithmException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
@@ -56,30 +56,31 @@ public class cadastro extends HttpServlet {
                     request.getParameter("email")
             );
             
-            boolean success = false;
-            try {
-                success = Cadastrar(usuario);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(cadastro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            boolean success = Cadastrar(usuario);
             if(success){
-                out.println("<b>Usuário cadastrado</b>");
+                request.setAttribute("redirect-path", "login.html");
+                request.setAttribute("message", "Usuario cadastrado com sucesso!");
             }
             else
             {
-                out.println("<b>Falha no cadastro</b>");
+                request.setAttribute("redirect-path", "cadastro.html");
+                request.setAttribute("message", "Falha ao cadastrar usuario. Tente novamente mais tarde.");
             }
+            request.getRequestDispatcher("voltar.jsp").forward(request, response);
         }
     }
 
     private boolean Cadastrar(Usuario usuario) throws ClassNotFoundException, SQLException
     {
         DaoAutenticacao dao = new DaoAutenticacao();
-        
-        return (dao.Cadastro(usuario) == 1);
+        try{
+            return (dao.Cadastro(usuario) == 1);
+
+        } catch(Exception ex)
+        {
+            return false;
+        }
     }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

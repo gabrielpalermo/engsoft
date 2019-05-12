@@ -40,3 +40,8 @@ table {
 th {
     width: 300px;
 }
+
+select, input {
+    width: 175px;
+    height: 25px;
+}

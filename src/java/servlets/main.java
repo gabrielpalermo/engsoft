@@ -30,8 +30,16 @@ public class main extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            // Redirect path indica a página solicitada
             String redirectPath = request.getParameter("redirect-path");
+            
+            // Tela de editar dinâmica para as entidades Cartão e Movimentação
+            if(redirectPath.equals("edit.jsp"))
+            {
+                String entidade = request.getParameter("entidade");
+                request.setAttribute("entidade", entidade);
+            }
+            
             String documento = request.getParameter("documento");
             out.println("<b>Processando requisição ...</b>");
             
