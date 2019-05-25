@@ -16,6 +16,14 @@
         <servlet-name>cartoes</servlet-name>
         <servlet-class>servlets.cartoes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>movimentacoes</servlet-name>
+        <servlet-class>servlets.movimentacoes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acompanhamento</servlet-name>
+        <servlet-class>servlets.acompanhamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>cartoes</servlet-name>
         <url-pattern>/cartoes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>movimentacoes</servlet-name>
+        <url-pattern>/movimentacoes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acompanhamento</servlet-name>
+        <url-pattern>/acompanhamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

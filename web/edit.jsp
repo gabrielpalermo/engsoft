@@ -24,7 +24,7 @@
         <% if(entidade.equals("cartoes")){ %>
             <%= servlets.cartoes.GetCartoesEdit(documento)%>
         <% } else if(entidade.equals("movimentacoes")){ %>
-            <%= servlets.cartoes.GetCartoesEdit(documento)%>
+            <%= servlets.movimentacoes.GetMovimentacoesDelete(documento)%>
         <% } %>
         
         <form autocomplete="off" action="main" method="get">

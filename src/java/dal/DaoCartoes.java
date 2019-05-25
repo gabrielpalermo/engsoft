@@ -42,8 +42,8 @@ public class DaoCartoes {
     public void Editar(Cartao cartao) throws SQLException
     {
          PreparedStatement statement = _bdConnection.prepareStatement("UPDATE cartao SET "
-                    + "limite = " + cartao.Limite + ", bandeira = " + cartao.Bandeira
-                    + "WHERE codigo = " + cartao.Codigo + " AND documento = " + cartao.Documento);
+                    + "limite = " + cartao.Limite + ", bandeira = '" + cartao.Bandeira
+                    + "' WHERE codigo = '" + cartao.Codigo + "' AND documento = '" + cartao.Documento + "'");
  
         statement.executeUpdate();
     }

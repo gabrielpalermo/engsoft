@@ -20,7 +20,7 @@
         <!--- Formulário para cadastro de cartões --->
         <form autocomplete="off" action="cartoes" method="get">
             <h3>
-                <input type="text" name="codigo" required placeholder="Código do cartão">
+                <input type="text" name="codigo" required data-inputmask="'mask': '9999 9999 9999 9999'" placeholder="Código do cartão">
             </h3>
             <h3>
                 <input type="number" name="limite" required placeholder="Limite">
