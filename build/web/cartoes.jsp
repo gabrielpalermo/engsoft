@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Controle de Gastos</title>
+        <title>Controle Financeiro</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -20,7 +20,7 @@
         <!--- Formulário para cadastro de cartões --->
         <form autocomplete="off" action="cartoes" method="get">
             <h3>
-                <input type="text" name="codigo" required placeholder="Código do cartão">
+                <input type="text" name="codigo" required data-inputmask="'mask': '9999 9999 9999 9999'" placeholder="Código do cartão">
             </h3>
             <h3>
                 <input type="number" name="limite" required placeholder="Limite">
@@ -29,7 +29,7 @@
                 <input type="text" name="bandeira" required placeholder="Bandeira">
             </h3>
             <input type="hidden" name="documento" value=<%=documento%>>
-            <button name="button" type="submit">Cadastrar</button>
+            <button name="action_cartoes" value="cadastrar" type="submit">Cadastrar</button>
         </form>
         
         <!--- Tabela de cartões construída dinamicamente --->
@@ -39,6 +39,8 @@
         <form autocomplete="off" action="main" method="get">
             <input type="hidden" name="documento" value=<%=documento%>>
             <button name="redirect-path" type="submit" value="tela_usuario.jsp">Voltar</button>
+            <input type="hidden" name="entidade" value="cartoes">
+            <button name="redirect-path" type="submit" value="edit.jsp">Editar / Excluir</button>
         </form>
         
     </body>

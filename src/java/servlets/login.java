@@ -45,7 +45,9 @@ public class login extends HttpServlet {
         try {
             success = Login(documento, senha);
         } catch (ClassNotFoundException | SQLException ex) {
-             response.sendRedirect("falha_login.html");
+            request.setAttribute("redirect-path", "login.html");
+            request.setAttribute("message", "Falha no login. Usuario ou senha incorretos.");
+            request.getRequestDispatcher("voltar.jsp").forward(request, response);
         }
 
         if(success){

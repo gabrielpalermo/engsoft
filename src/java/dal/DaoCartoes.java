@@ -25,7 +25,7 @@ public class DaoCartoes {
      _bdConnection = fabrica.Conexao();
     }
     
-    public int Cadastro(Cartao cartao) throws SQLException
+    public void Cadastro(Cartao cartao) throws SQLException
     {
         PreparedStatement statement = _bdConnection.prepareStatement("INSERT INTO cartao"
                     + "(codigo, documento, limite, bandeira)"
@@ -36,7 +36,22 @@ public class DaoCartoes {
         statement.setDouble(3, cartao.Limite);
         statement.setString(4, cartao.Bandeira);
         
-        return statement.executeUpdate();
+        statement.executeUpdate();
+    }
+    
+    public void Editar(Cartao cartao) throws SQLException
+    {
+         PreparedStatement statement = _bdConnection.prepareStatement("UPDATE cartao SET "
+                    + "limite = " + cartao.Limite + ", bandeira = '" + cartao.Bandeira
+                    + "' WHERE codigo = '" + cartao.Codigo + "' AND documento = '" + cartao.Documento + "'");
+ 
+        statement.executeUpdate();
+    }
+    
+    public void Excluir(String codigo) throws SQLException
+    {
+        PreparedStatement statement = _bdConnection.prepareStatement("DELETE FROM cartao WHERE codigo ='" + codigo +"'");
+        statement.executeUpdate();
     }
     
     public ArrayList<Cartao> GetCartoes(String documento) throws SQLException

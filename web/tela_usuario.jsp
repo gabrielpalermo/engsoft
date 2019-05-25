@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <title>Controle de Gastos</title>
+        <title>Controle Financeiro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
@@ -21,8 +21,9 @@
         <form autocomplete="off" action="main" method="get">
             <input type="hidden" name="documento" value=<%=documento%>>
             <button name="redirect-path" type="submit" value="cartoes.jsp">Cartões</button>
+            <button name="redirect-path" type="submit" value="movimentacoes.jsp">Movimentacoes</button>
             <!-- TO DO: desenvolvimento de tela de movimentações e acompanhamento -->
-            <button name="redirect-path" type="submit" value="movimentacoes.html">Movimentações</button>
+            <button name="redirect-path" type="submit" value="acompanhamento.jsp">Acompanhamento</button>
             <br/>
             <br/>
             <button name="redirect-path" type="submit" value="index.html">Sair</button>
